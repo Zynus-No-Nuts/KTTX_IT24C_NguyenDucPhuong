@@ -240,3 +240,48 @@ html,
   text-align: left;
   font-weight: 500;
 }
+
+/* Hình bàn tay khi hover vào dòng chữ Todo */
+.text-todo {
+  cursor: pointer;
+  flex: 1;
+}
+
+/* Hình bàn tay khi hover vào các nút chức năng (All, Done, In-progress) */
+.filter button {
+  /* ... các thuộc tính cũ ... */
+  cursor: pointer;
+}
+
+/* Hình bàn tay khi hover vào nút Create chính */
+.btn-create-main {
+  /* ... các thuộc tính cũ ... */
+  cursor: pointer;
+}
+
+/* Hình bàn tay khi hover vào các nút icon Thùng rác và Chỉnh sửa */
+.actions button {
+  cursor: pointer;
+}
+
+/* Hình bàn tay cho các nút trong Modal (Confirm, Close/Cancel) */
+.modal-footer button {
+  cursor: pointer;
+}
+
+.text-todo:hover {
+  color: #2196f3;
+  /* Đổi sang màu xanh nhẹ */
+  transition: color 0.2s ease;
+}
+
+/* Hiệu ứng khi di chuột vào các nút trong danh sách */
+.btn-del:hover {
+  background-color: #d32f2f !important;
+  /* Đỏ đậm hơn */
+}
+
+.btn-edit:hover {
+  background-color: #1976d2 !important;
+  /* Xanh đậm hơn */
+}
