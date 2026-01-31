@@ -1,0 +1,242 @@
+/* ❌ XOÁ display:flex ở body/root để tránh xung đột layout */
+body,
+html,
+#root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #f8f9fa;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Container chính căn giữa Todo Card */
+/* Container bao quanh Todo Card */
+.container {
+  min-height: 100vh;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  width: 100vw !important;
+  max-width: 100% !important;
+  /* Ghi đè giới hạn width của Bootstrap */
+  margin: 0 !important;
+}
+
+.todo-card {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  width: 450px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  color: #ff6b6b;
+  text-align: center;
+  font-size: 48px;
+  margin-bottom: 25px;
+  letter-spacing: 8px;
+  font-weight: 500;
+}
+
+/* --- Search & Filter (Giữ nguyên) --- */
+.search-group {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.search-group input {
+  flex: 1;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  outline: none;
+}
+
+.btn-create-main {
+  background: #2196f3;
+  color: white;
+  border: none;
+  padding: 0 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.filter {
+  display: flex;
+  margin-bottom: 20px;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.filter button {
+  flex: 1;
+  padding: 12px;
+  border: 1px solid #eee;
+  background: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.filter button.active {
+  border: 1px solid #4caf50;
+  color: #4caf50;
+  font-weight: bold;
+}
+
+/* --- Todo List & Actions (Giữ nguyên) --- */
+.todo-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border: 1px solid #f0f0f0;
+  border-radius: 6px;
+}
+
+.todo-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.completed {
+  text-decoration: line-through;
+  color: #bbb;
+  font-style: italic;
+  cursor: pointer;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-del {
+  background: #f44336;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-edit {
+  background: #2196f3;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Lớp phủ mờ toàn màn hình */
+/* ✅ CẢI TIẾN: Overlay căn giữa tuyệt đối */
+.overlay {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  background: rgba(0, 0, 0, 0.5) !important;
+  display: flex !important;
+  justify-content: center !important;
+  /* Căn giữa ngang */
+  align-items: center !important;
+  /* Căn giữa dọc */
+  z-index: 9999 !important;
+}
+
+/* ✅ CẢI TIẾN: Căn chỉnh Modal hình vuông */
+.modal {
+  /* Ghi đè hoàn toàn các thuộc tính gây lệch của Bootstrap */
+  position: relative !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  margin: 0 !important;
+  transform: none !important;
+  /* Xoá các thuộc tính dịch chuyển của Bootstrap */
+
+  background: white !important;
+  padding: 40px !important;
+  border-radius: 12px !important;
+
+  /* Giữ hình vuông */
+  width: 400px !important;
+  height: 400px !important;
+
+  /* Căn giữa nội dung bên trong */
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2) !important;
+  border: none !important;
+}
+
+.modal h3 {
+  text-align: center !important;
+  margin-bottom: 25px !important;
+}
+
+.modal input {
+  width: 100% !important;
+  padding: 15px !important;
+  margin-bottom: 20px !important;
+  border: 1px solid #ddd !important;
+  border-radius: 6px !important;
+}
+
+.modal-footer {
+  display: flex !important;
+  gap: 15px !important;
+  border-top: none !important;
+  /* Bỏ đường kẻ của Bootstrap */
+  padding: 0 !important;
+}
+
+.modal-footer button {
+  flex: 1 !important;
+  padding: 12px !important;
+  font-weight: bold !important;
+}
+
+.btn-confirm {
+  background: #2196f3;
+  color: white;
+}
+
+.btn-cancel {
+  background: #f0f0f0;
+  color: #333;
+}
+
+.no-result {
+  padding: 20px;
+  text-align: center;
+  color: #888;
+  font-style: italic;
+  background-color: #f9f9f9;
+  border-radius: 6px;
+}
+
+/* YÊU CẦU 3: Bôi đỏ viền input khi có lỗi */
+.modal input.input-error {
+  border: 1px solid #ff6b6b !important;
+  background-color: #fff5f5;
+}
+
+/* Kiểu dáng cho thông báo lỗi dưới input */
+.error-text {
+  color: #ff6b6b;
+  font-size: 13px;
+  margin: 5px 0 0 0;
+  text-align: left;
+  font-weight: 500;
+}
